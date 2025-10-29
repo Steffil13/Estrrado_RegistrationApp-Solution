@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Estrrado_RegistrationApp_CoreMVC.Models.Student>
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h2 class="mt-3">Registered Students</h2>
+
+<div class="mb-3">
+    <a asp-action="Create" asp-controller="Registration" class="btn btn-primary">Add New Student</a>
+    <a asp-action="Index" asp-controller="Login" class="btn btn-secondary ms-2">Login Page</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>StudentId</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Age</th>
+            <th>DOB</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.StudentId</td>
+                <td>@(s.FirstName + " " + s.LastName)</td>
+                <td>@s.Email</td>
+                <td>@s.Phone</td>
+                <td>@s.Age</td>
+                <td>@s.DOB.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <!-- you can implement Details/Edit/Delete later -->
+                    <a asp-action="Details" asp-route-id="@s.StudentId" class="btn btn-sm btn-info">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
